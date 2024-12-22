@@ -10,9 +10,7 @@ from utils.plots import Annotator, colors
 
 # 自动检测并选择设备
 if torch.cuda.is_available():
-    device = 'cuda:0'  # 如果有 NVIDIA GPU，则使用 CUDA
-elif torch.backends.mps.is_available():
-    device = 'mps'  # 如果有苹果芯片 GPU（MPS）则使用 MPS
+    device = 'cuda'  # 如果有 NVIDIA GPU，则使用 CUDA
 else:
     device = 'cpu'  # 如果没有 GPU，则使用 CPU
 
@@ -37,22 +35,25 @@ frame = cv2.imread(image_path)
 assert frame is not None, f"无法读取图像文件 {image_path}。"
 
 # 将 BGR 图像转换为 RGB（YOLOv5 通常使用 RGB）
-# img_size = 640  # YOLOv5 默认使用 640x640
-# img = cv2.resize(frame, (img_size, img_size))
 img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 img = np.ascontiguousarray(frame)  # 转为连续内存布局
 img = torch.from_numpy(frame).to(model.device)  # 转换为 PyTorch 张量，并移动到设备
 
-# 调整张量维度顺序为 [C, H, W] 并增加批次维度 [1, C, H, W]
-img = img.permute(2, 0, 1).unsqueeze(0)
-img = img.half() if model.fp16 else img.float()  # 若模型支持半精度则使用
-img /= 255.0  # 将像素归一化到 [0,1]
+# 假设 frame 是一个 NumPy 数组
+frame_tensor = torch.from_numpy(frame)
+frame_tensor = torch.from_numpy(frame).to(torch.float32)  # 显式转换为 float32 类型
+frame_tensor = frame_tensor.permute(2, 0, 1)  # 转置为通道优先（CHW）
+
+# 图像预处理
+img = frame_tensor.float()
+img /= 255.0 # 将图像像素值归一化到 0-1 范围
+img = frame_tensor.unsqueeze(0) # 扩展一个维度，作为批次大小维度
 
 # 打印张量形状以确认
-print(f"Image tensor shape before model: {img.shape}")  # 应该输出 [1, 3, H, W]
+print(f"Image tensor shape before model: {img.shape}")  # 我也不知道预期形状是什么
 
 # 推理
-pred = model(frame, augment=augment)[0]  # 进行前向推理，得到预测张量
+pred = model(img, augment=augment)[0]  # 进行前向推理，得到预测张量
 
 # 非最大抑制（NMS）
 pred = non_max_suppression(pred, conf_thres, iou_thres, classes=classes, agnostic=agnostic_nms)
@@ -66,7 +67,6 @@ for det in pred:
             c = int(cls)
             label = f'{names[c]} {conf:.2f}'
             annotator.box_label(xyxy, label, color=colors(c, True))
-
 maskImg = annotator.result()
 
 # 保存结果图像
