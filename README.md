@@ -57,7 +57,7 @@ python demo_pc.py --weights path/to/weights.pt --imgsz 640 640 --batch-size 1 --
 ```
 
 ### 特别注意  
- - 在竞赛用的小车上，记得运行`main.py`, `demo_pc.py`是在电脑上调色用的。
+ - 在竞赛用的小车上，记得运行`main.py`, `demo_pc.py`是在电脑上调试用的。
 
 # 致谢  
 感谢 [ultralytics/yolov5](https://github.com/ultralytics/yolov5) 提供的 YOLOv5 模型。  
