@@ -20,8 +20,8 @@
 
 1. 克隆仓库：
     ```sh
-    git clone https://github.com/yourusername/yolov5-object-detection.git
-    cd yolov5-object-detection
+    git clone https://github.com/ZJ-Dragon/ImageRecognition.git
+    cd ./ImageRecognition
     ```
 
 2. 安装所需的包：
