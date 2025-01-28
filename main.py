@@ -35,7 +35,7 @@ model = DetectMultiBackend(weights_path, device=device) # 加载预训练模型
 names = model.names # 获取模型的类别名称
 
 # 图像预处理
-img = np.ascontiguousarray (img)  # 将帧数据转为连续的内存布局
+img = np.ascontiguousarray (frame)  # 将帧数据转为连续的内存布局
 img = torch.from_numpy(img).to(model.device) # 转换为 PyTorch 张量，并移动到模型所在的设备
 img = img.half() if model.fp16 else img.float() # 如果模型支持半精度，使用半精度，否则使用单精度
 img /= 255.0 # 将图像像素值归一化到 0-1 范围

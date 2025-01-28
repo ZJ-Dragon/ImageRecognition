@@ -40,6 +40,8 @@ noval: false
 noautoanchor: false
 noplots: false
 evolve: null
+evolve_population: data/hyps
+resume_evolve: null
 bucket: ''
 cache: null
 image_weights: false
@@ -65,4 +67,6 @@ entity: null
 upload_dataset: false
 bbox_interval: -1
 artifact_alias: latest
+ndjson_console: false
+ndjson_file: false
 save_dir: runs/train/exp

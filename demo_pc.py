@@ -29,7 +29,7 @@ model = DetectMultiBackend(weights_path, device=device)  # 加载预训练模型
 names = model.names  # 获取模型的类别名称
 
 # 加载本地图片作为输入
-image_path = './materials/img01.jpg'  # 指定图像文件路径
+image_path = './data/images/bus.jpg'  # 指定图像文件路径
 assert os.path.exists(image_path), f"文件 {image_path} 不存在，请检查路径。"
 frame = cv2.imread(image_path)
 assert frame is not None, f"无法读取图像文件 {image_path}。"
