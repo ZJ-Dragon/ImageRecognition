@@ -50,7 +50,7 @@ img_size = check_img_size(640, s=stride)  # 调整目标尺寸，确保是 strid
 names = model.names
 
 # 加载本地图片
-image_path = './data/images/bus.jpg'
+image_path = './data/images/huang.jpg'
 assert os.path.exists(image_path), f"文件 {image_path} 不存在，请检查路径。"
 frame = cv2.imread(image_path)
 assert frame is not None, f"无法读取图像文件 {image_path}。"
@@ -92,9 +92,9 @@ cv2.imwrite(result_path, result_img)
 
 # 显示结果图像（测试所用，上线时记得打注释）
 '''if result_img is not None:
-        cv2.imshow('Result Image', result_img)# 在窗口中显示图像
-        cv2.waitKey(0)# 等待用户按键
-        cv2.destroyAllWindows()# 关闭所有窗口
-    else:
-        print(f"无法读取图像文件 {result_path}。")
+    cv2.imshow('Result Image', result_img)# 在窗口中显示图像
+    cv2.waitKey(0)# 等待用户按键
+    cv2.destroyAllWindows()# 关闭所有窗口
+else:
+    print(f"无法读取图像文件 {result_path}。")
 '''
