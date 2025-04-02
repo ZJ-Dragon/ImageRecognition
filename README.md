@@ -1,8 +1,14 @@
 # YOLOv5 目标检测项目
 
+```
 该项目适用于 2025 青科赛自动驾驶小车的附加任务。
 完成 2025 青科赛后，本项目原作者会看心情继续维护，
 也欢迎参与本竞赛的后浪继续维护这个项目。  
+```
+
+### 特别注意
+本项目自 2025年4月2日 起不再服务于青科赛附加项目，但是整体原理相似，如有需要可自行更改代码，但不要 pull 到仓库里了。
+你的老师会有更好的解决方案的，相信他。
 
 *Together we Advance_*
 
@@ -60,7 +66,7 @@ python demo_pc.py --weights path/to/weights.pt --imgsz 640 640 --batch-size 1 --
 ```
 
 ### 特别注意  
- - 在竞赛用的小车上，记得运行`main.py`, `demo_pc.py`是在电脑上调试用的。
+ - 本项目保留了应该在小车上运行的主程序，记得运行`main.py`, `demo_pc.py`是在电脑上调试用的。
 
 # 致谢  
 感谢 [ultralytics/yolov5](https://github.com/ultralytics/yolov5) 提供的 YOLOv5 模型。  
