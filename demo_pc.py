@@ -34,9 +34,9 @@ def letterbox(img, new_shape=(640, 640), color=(114, 114, 114)):
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 # 模型与参数设置
-weights_path = 'weights/yolov5s.pt'
+weights_path = 'weights/face01.pt'
 augment = False
-line_thickness = 3
+line_thickness = 5
 conf_thres = 0.5
 iou_thres = 0.65
 classes = None
@@ -47,7 +47,7 @@ device = select_device(device)
 model = DetectMultiBackend(weights_path, device=device)
 stride = model.stride  # 获取模型步幅
 img_size = check_img_size(640, s=stride)  # 调整目标尺寸，确保是 stride 的倍数
-names = model.names
+names = "黄令仪"
 
 # 加载本地图片
 image_path = './data/images/huang.jpg'
@@ -91,10 +91,10 @@ result_path = './results/result.jpg'
 cv2.imwrite(result_path, result_img)
 
 # 显示结果图像（测试所用，上线时记得打注释）
-'''if result_img is not None:
+if result_img is not None:
     cv2.imshow('Result Image', result_img)# 在窗口中显示图像
     cv2.waitKey(0)# 等待用户按键
     cv2.destroyAllWindows()# 关闭所有窗口
 else:
     print(f"无法读取图像文件 {result_path}。")
-'''
+
