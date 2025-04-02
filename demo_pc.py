@@ -2,11 +2,16 @@ import cv2
 import os
 import torch
 import numpy as np
+import sys
 
 from models.common import DetectMultiBackend
 from utils.general import check_img_size, non_max_suppression, scale_boxes
 from utils.torch_utils import select_device
 from utils.plots import Annotator, colors
+
+if sys.platform != "win32":
+    import pathlib
+    pathlib.WindowsPath = pathlib.PosixPath
 
 def letterbox(img, new_shape=(640, 640), color=(114, 114, 114)):
     """
@@ -36,7 +41,7 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 # 模型与参数设置
 weights_path = 'weights/face01.pt'
 augment = False
-line_thickness = 5
+line_thickness = 3
 conf_thres = 0.5
 iou_thres = 0.65
 classes = None
@@ -47,10 +52,10 @@ device = select_device(device)
 model = DetectMultiBackend(weights_path, device=device)
 stride = model.stride  # 获取模型步幅
 img_size = check_img_size(640, s=stride)  # 调整目标尺寸，确保是 stride 的倍数
-names = "黄令仪"
+names = model.names
 
 # 加载本地图片
-image_path = './data/images/huang.jpg'
+image_path = './data/images/basketball.jpg'
 assert os.path.exists(image_path), f"文件 {image_path} 不存在，请检查路径。"
 frame = cv2.imread(image_path)
 assert frame is not None, f"无法读取图像文件 {image_path}。"
