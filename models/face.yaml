@@ -1,4 +1,0 @@
-train: /Volumes/MobileWorkstation/Projects/AutoPilot/dataset/images/train
-val: /Volumes/MobileWorkstation/Projects/AutoPilot/dataset/images/val
-nc: 1
-names: ['face']
