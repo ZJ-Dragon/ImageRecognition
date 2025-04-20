@@ -1,4 +1,5 @@
-train: /Volumes/MobileWorkstation/Projects/AutoPilot/dataset/images/train
-val: /Volumes/MobileWorkstation/Projects/AutoPilot/dataset/images/val
-nc: 1
-names: ['face']
+train: /Volumes/MobileWorkstation/Projects/AutoPilot/datasets/images/train
+val: /Volumes/MobileWorkstation/Projects/AutoPilot/datasets/images/valid
+test: /Volumes/MobileWorkstation/Projects/AutoPilot/datasets/images/test
+nc: 6
+names: ['QianXuesen','TuYoyo','HuangLingyi','DengJiaxian','YuanLongping','LiuYang']
