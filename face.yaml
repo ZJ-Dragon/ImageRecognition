@@ -1,5 +1,5 @@
 train: /Volumes/MobileWorkstation/Projects/AutoPilot/datasets/images/train
 val: /Volumes/MobileWorkstation/Projects/AutoPilot/datasets/images/valid
 test: /Volumes/MobileWorkstation/Projects/AutoPilot/datasets/images/test
-nc: 6
+nc: 5
 names: ['QianXuesen','TuYoyo','HuangLingyi','DengJiaxian','YuanLongping','LiuYang']
