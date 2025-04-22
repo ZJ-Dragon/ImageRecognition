@@ -2,7 +2,7 @@
 
 import glob, os, collections
 
-label_root = "/Volumes/MobileWorkstation/Projects/AutoPilot/datasets/images"   # 指向 labels 总目录
+label_root = "/Volumes/MobileWorkstation/Projects/AutoPilot/datasets/face03.250422.0006/images"   # 指向 labels 总目录
 txt_files  = glob.glob(f"{label_root}/**/*.txt", recursive=True)
 
 print(f"共找到 {len(txt_files)} 个 .txt 标注文件")
