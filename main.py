@@ -20,7 +20,7 @@ cap = cv2.VideoCapture(10)
 ret,frame = cap.read()
 
 # 设置参数
-weights_path = 'weights/yolov5s.pt' # 模型权重路径
+weights_path = 'weights/face04.pt' # 模型权重路径
 device = '' # 默认为空，自动选择设备
 augment = False # 是否进行数据增强
 line_thickness = 3 # 画框线条的粗细
@@ -47,15 +47,17 @@ pred = model (img, augment=augment)[0]
 # 非最大抑制（NMS）
 pred = non_max_suppression (pred, conf_thres, iou_thres, classes=classes,agnostic=agnostic_nms)
 
-# 处理检测结果
-for i, det in enumerate (pred): # 遍历每个预测结果
-    annotator = Annotator (frame, line_width=line_thickness, example=str(names)) # 创建标注工具
-    det[:,:4] = scale_boxes(img.shape[2:], det[:,:4], frame.shape).round() # 将检测框的坐标缩放到原图尺寸
-    for *xyxy, conf, cls in reversed(det): # 遍历每个检测框
-        c = int(cls) # 获取类别索引
-        label = '%s %.2f' % (names[int(cls)], conf) # 格式化标签，显示类别和置信度
-        annotator.box_label(xyxy, label, color=colors(c, True)) # 在图像上绘制标注框
-maskImg = annotator.result() # 获取处理后的图像
+# 处理检测结果，在原图上绘制预测框
+annotator = Annotator(frame, line_width=line_thickness, example=str(names))
+for det in pred:
+    if len(det):
+        # 将检测框坐标从 letterbox 图像尺寸映射回原图尺寸
+        det[:, :4] = scale_boxes(img.shape[2:], det[:, :4], frame.shape).round()
+        for *xyxy, conf, cls in reversed(det):
+            c = int(cls)
+            label = f'{names[c]} {conf:.2f}'
+            annotator.box_label(xyxy, label, color=colors(c, True))
+result_img = annotator.result()
 
 # 保存结果图像
-cv2.imwrite('/home/lamb/yolov5-master/images/result.jpg',maskImg)
+cv2.imwrite('/home/lamb/yolov5-master/images/result.jpg',result_img)

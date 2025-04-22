@@ -37,7 +37,7 @@ def letterbox(img, new_shape=(640, 640), color=(114, 114, 114)):
 
 # 自动检测并选择设备
 if torch.cuda.is_available(): device = 'cuda'
-else: device = ' cpu'
+else: device = 'cpu'
 
 # 模型与参数设置
 weights_path = 'weights/face04.pt'
