@@ -36,7 +36,8 @@ def letterbox(img, new_shape=(640, 640), color=(114, 114, 114)):
     return img, ratio, (dw, dh)
 
 # 自动检测并选择设备
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
+if torch.cuda.is_available(): device = 'cuda'
+else: device = ' cpu'
 
 # 模型与参数设置
 weights_path = 'weights/face04.pt'
@@ -55,7 +56,7 @@ img_size = check_img_size(640, s=stride)  # 调整目标尺寸，确保是 strid
 names = model.names
 
 # 加载本地图片
-image_path = './data/images/.jpg'
+image_path = './data/images/huang.jpg'
 assert os.path.exists(image_path), f"文件 {image_path} 不存在，请检查路径。"
 frame = cv2.imread(image_path)
 assert frame is not None, f"无法读取图像文件 {image_path}。"
