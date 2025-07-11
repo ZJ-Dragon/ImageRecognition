@@ -44,6 +44,10 @@ except (ImportError, AssertionError):
     import ultralytics
 
 from ultralytics.utils.checks import check_requirements
+<<<<<<< HEAD
+=======
+from ultralytics.utils.patches import torch_load
+>>>>>>> ultralytics/master
 
 from utils import TryExcept, emojis
 from utils.downloads import curl_download, gsutil_getsize
@@ -1100,12 +1104,16 @@ def non_max_suppression(
         # Batched NMS
         c = x[:, 5:6] * (0 if agnostic else max_wh)  # classes
         boxes, scores = x[:, :4] + c, x[:, 4]  # boxes (offset by class), scores
+<<<<<<< HEAD
         if boxes.is_cuda:
             boxes_cpu = boxes.cpu()
             scores_cpu = scores.cpu()
             i = torchvision.ops.nms(boxes_cpu, scores_cpu, iou_thres)
         else:
             i = torchvision.ops.nms(boxes, scores, iou_thres)
+=======
+        i = torchvision.ops.nms(boxes, scores, iou_thres)  # NMS
+>>>>>>> ultralytics/master
         i = i[:max_det]  # limit detections
         if merge and (1 < n < 3e3):  # Merge NMS (boxes merged using weighted mean)
             # update boxes as boxes(i,4) = weights(i,n) * boxes(n,4)
@@ -1132,7 +1140,11 @@ def strip_optimizer(f="best.pt", s=""):
 
     Example: from utils.general import *; strip_optimizer()
     """
+<<<<<<< HEAD
     x = torch.load(f, map_location=torch.device("cpu"))
+=======
+    x = torch_load(f, map_location=torch.device("cpu"))
+>>>>>>> ultralytics/master
     if x.get("ema"):
         x["model"] = x["ema"]  # replace model with ema
     for k in "optimizer", "best_fitness", "ema", "updates":  # keys

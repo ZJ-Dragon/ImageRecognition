@@ -1,5 +1,10 @@
 #!/bin/bash
+<<<<<<< HEAD
 # YOLOv5 🚀 by Ultralytics, AGPL-3.0 license
+=======
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
+>>>>>>> ultralytics/master
 # Download ILSVRC2012 ImageNet dataset https://image-net.org
 # Example usage: bash data/scripts/get_imagenet.sh
 # parent
@@ -11,8 +16,13 @@
 if [ "$#" -gt 0 ]; then
   for opt in "$@"; do
     case "${opt}" in
+<<<<<<< HEAD
     --train) train=true ;;
     --val) val=true ;;
+=======
+      --train) train=true ;;
+      --val) val=true ;;
+>>>>>>> ultralytics/master
     esac
   done
 else

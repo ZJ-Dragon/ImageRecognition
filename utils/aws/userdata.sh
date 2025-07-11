@@ -1,4 +1,9 @@
 #!/bin/bash
+<<<<<<< HEAD
+=======
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
+>>>>>>> ultralytics/master
 # AWS EC2 instance startup script https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html
 # This script will run only once on first instance start (for a re-start script see mime.sh)
 # /home/ubuntu (ubuntu) or /home/ec2-user (amazon-linux) is working dir
@@ -23,5 +28,9 @@ else
     sudo docker start $id
     # sudo docker exec -it $id python train.py --resume # single-GPU
     sudo docker exec -d $id python utils/aws/resume.py # multi-scenario
+<<<<<<< HEAD
   done <<<"$list"
+=======
+  done <<< "$list"
+>>>>>>> ultralytics/master
 fi

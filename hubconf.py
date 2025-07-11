@@ -10,7 +10,11 @@ Usage:
     model = torch.hub.load('.', 'custom', 'yolov5s.pt', source='local')  # local repo
 """
 
+<<<<<<< HEAD
 import torch
+=======
+from ultralytics.utils.patches import torch_load
+>>>>>>> ultralytics/master
 
 
 def _create(name, pretrained=True, channels=3, classes=80, autoshape=True, verbose=True, device=None):
@@ -47,7 +51,11 @@ def _create(name, pretrained=True, channels=3, classes=80, autoshape=True, verbo
 
     Notes:
         For more information on model loading and customization, visit the
+<<<<<<< HEAD
         [YOLOv5 PyTorch Hub Documentation](https://docs.ultralytics.com/yolov5/tutorials/pytorch_hub_model_loading).
+=======
+        [YOLOv5 PyTorch Hub Documentation](https://docs.ultralytics.com/yolov5/tutorials/pytorch_hub_model_loading/).
+>>>>>>> ultralytics/master
     """
     from pathlib import Path
 
@@ -87,7 +95,11 @@ def _create(name, pretrained=True, channels=3, classes=80, autoshape=True, verbo
             cfg = list((Path(__file__).parent / "models").rglob(f"{path.stem}.yaml"))[0]  # model.yaml path
             model = DetectionModel(cfg, channels, classes)  # create model
             if pretrained:
+<<<<<<< HEAD
                 ckpt = torch.load(attempt_download(path), map_location=device)  # load
+=======
+                ckpt = torch_load(attempt_download(path), map_location=device)  # load
+>>>>>>> ultralytics/master
                 csd = ckpt["model"].float().state_dict()  # checkpoint state_dict as FP32
                 csd = intersect_dicts(csd, model.state_dict(), exclude=["anchors"])  # intersect
                 model.load_state_dict(csd, strict=False)  # load
@@ -210,7 +222,11 @@ def yolov5s(pretrained=True, channels=3, classes=80, autoshape=True, _verbose=Tr
 
     Notes:
         For more details on model loading and customization, visit
+<<<<<<< HEAD
         the [YOLOv5 PyTorch Hub Documentation](https://pytorch.org/hub/ultralytics_yolov5).
+=======
+        the [YOLOv5 PyTorch Hub Documentation](https://pytorch.org/hub/ultralytics_yolov5/).
+>>>>>>> ultralytics/master
     """
     return _create("yolov5s", pretrained, channels, classes, autoshape, _verbose, device)
 
@@ -438,7 +454,11 @@ def yolov5l6(pretrained=True, channels=3, classes=80, autoshape=True, _verbose=T
         ```
 
     Note:
+<<<<<<< HEAD
         Refer to [PyTorch Hub Documentation](https://pytorch.org/hub/ultralytics_yolov5) for additional usage instructions.
+=======
+        Refer to [PyTorch Hub Documentation](https://pytorch.org/hub/ultralytics_yolov5/) for additional usage instructions.
+>>>>>>> ultralytics/master
     """
     return _create("yolov5l6", pretrained, channels, classes, autoshape, _verbose, device)
 

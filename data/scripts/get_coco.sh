@@ -1,5 +1,10 @@
 #!/bin/bash
+<<<<<<< HEAD
 # YOLOv5 🚀 by Ultralytics, AGPL-3.0 license
+=======
+# Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
+
+>>>>>>> ultralytics/master
 # Download COCO 2017 dataset http://cocodataset.org
 # Example usage: bash data/scripts/get_coco.sh
 # parent
@@ -11,10 +16,17 @@
 if [ "$#" -gt 0 ]; then
   for opt in "$@"; do
     case "${opt}" in
+<<<<<<< HEAD
     --train) train=true ;;
     --val) val=true ;;
     --test) test=true ;;
     --segments) segments=true ;;
+=======
+      --train) train=true ;;
+      --val) val=true ;;
+      --test) test=true ;;
+      --segments) segments=true ;;
+>>>>>>> ultralytics/master
     esac
   done
 else

@@ -9,6 +9,10 @@ from pathlib import Path
 
 import torch
 import yaml
+<<<<<<< HEAD
+=======
+from ultralytics.utils.patches import torch_load
+>>>>>>> ultralytics/master
 
 FILE = Path(__file__).resolve()
 ROOT = FILE.parents[2]  # YOLOv5 root directory
@@ -18,7 +22,11 @@ if str(ROOT) not in sys.path:
 port = 0  # --master_port
 path = Path("").resolve()
 for last in path.rglob("*/**/last.pt"):
+<<<<<<< HEAD
     ckpt = torch.load(last)
+=======
+    ckpt = torch_load(last)
+>>>>>>> ultralytics/master
     if ckpt["optimizer"] is None:
         continue
 
