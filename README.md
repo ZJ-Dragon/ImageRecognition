@@ -6,26 +6,22 @@
 也欢迎参与本竞赛的后浪继续维护这个项目。  
 ```
 
-### 特别注意
-本项目自 2025年4月2日 起不再服务于青科赛附加项目，但是整体原理相似，如有需要可自行更改代码，但不要 pull 到仓库里了。
-你的老师会有更好的解决方案的，相信他。
-
 *Together we Advance_*
 
-## 重要  
-差点搞忘说了，本项目`face.yaml`文件中指定的路径为作者在 mac 上训练时的绝对路径。
-如果同志们想训练自己的模型，记得修改一下路径。
-但是各位改完路径就不要贸然 pull 到 main bench 上了，作者可能会疯的。
 
-## 环境要求
+## 最基本的环境要求
 
 - Python 3.7+
-- PyTorch
-- TensorFlow
-- OpenCV
-- NumPy  
 
-`详见 requirements.txt`
+`其余详见 requirements.txt`
+
+---
+指南：若使用 IDE 自动配置环境时出现一堆很 null 的错误，可以试试照着
+`requirements.txt`
+手动一个个安装包，又或者在 IDE（如 pycharm）中的“运行”框中的错误代码旁边直接点击`安装xxx`  
+
+另外，想必大家都知道 conda 喜欢在电脑里拉屎，因此我们不建议使用 conda 来管理环境，
+可根据个人喜好选择 miniconda 或者 pipenv 来管理环境。
 
 ## 安装
 
@@ -44,17 +40,10 @@
 
 ### 在普通电脑上使用 PyTorch 进行推理
 
-1. 将图像放置在 `data/images` 目录中。
+1. `data/images` 目录中自带比赛所需要的图像，不过是由相机拍摄，清晰度和小车拍摄的不一样。
 2. 运行 `demo_pc.py` 脚本：
     ```sh
     python demo_pc.py
-    ```
-
-### 导出 YOLOv5 模型到 TensorFlow
-
-1. 运行 `models/tf.py` 中的 `run` 函数以导出模型：
-    ```sh
-    python models/tf.py
     ```
 
 ### 命令行选项
@@ -62,8 +51,14 @@
 您可以使用命令行选项自定义推理：
 
 ```sh
-python demo_pc.py --weights path/to/weights.pt --imgsz 640 640 --batch-size 1 --dynamic
+python demo_pc.py --weights ./weights/face04.pt --imgsz 640 640 --batch-size 1 --dynamic
 ```
+
+## 训练模型
+
+*若要自定义数据集进行训练，本文暂不提供指导，请前往其他网站获取支持*
+
+1. 使用`HuggingFace`上的 [ImageRecognition]()
 
 ### 特别注意  
  - 本项目保留了应该在小车上运行的主程序，记得运行`main.py`, `demo_pc.py`是在电脑上调试用的。
