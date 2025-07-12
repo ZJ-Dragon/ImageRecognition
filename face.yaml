@@ -2,4 +2,12 @@ train: /Volumes/MobileWorkstation/Projects/AutoPilot/datasets/face03.250422.0006
 val: /Volumes/MobileWorkstation/Projects/AutoPilot/datasets/face03.250422.0006/images/valid
 test: /Volumes/MobileWorkstation/Projects/AutoPilot/datasets/face03.250422.0006/images/test
 nc: 5
-names: ['QianXuesen','TuYoyo','HuangLingyi','DengJiaxian','YuanLongping','LiuYang']
+names:
+  [
+    "QianXuesen",
+    "TuYoyo",
+    "HuangLingyi",
+    "DengJiaxian",
+    "YuanLongping",
+    "LiuYang",
+  ]
