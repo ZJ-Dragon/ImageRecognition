@@ -510,11 +510,8 @@ def export_paddle(model, im, file, metadata, prefix=colorstr("PaddlePaddle:")):
         $ pip install paddlepaddle x2paddle
         ```
     """
-<<<<<<< HEAD
     check_requirements(("paddlepaddle", "x2paddle"))
-=======
     check_requirements(("paddlepaddle>=3.0.0", "x2paddle"))
->>>>>>> ultralytics/master
     import x2paddle
     from x2paddle.convert import pytorch2paddle
 
